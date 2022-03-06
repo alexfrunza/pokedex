@@ -1,0 +1,102 @@
+:root {
+    --dark-purple: #7b62a3;
+    --green: #9bcc50;
+    --orange: #fd7d24;
+    --purple: #b97fc9;
+    --yellow: #eed535;
+    --grey: #bdb9b8;
+    --blue: #4592c4;
+    --light-blue: #3dc7ef;
+}
+
+.card {
+    line-height: 1.5rem;
+    display: flex;
+    flex-flow: column;
+    width: 250px;
+    margin-bottom: 20px;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+}
+
+.card:hover {
+    animation-name: bounce;
+    -moz-animation-name: bounce;
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+    50% {
+        -webkit-transform: translateY(-10px);
+        -ms-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+}
+
+.card img {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    align-self: center;
+    width: 200px;
+    height: 200px;
+}
+
+.card .details {
+    padding: 20px;
+}
+
+.type-box {
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.type-box:not(:first-child) {
+    margin-left: 10px;
+}
+
+.type-box-green {
+    background-color: var(--green);
+}
+
+.type-box-orange {
+    background-color: var(--orange);
+}
+
+.type-box-blue {
+    background-color: var(--blue);
+}
+
+.type-box-grey {
+    background-color: var(--grey);
+}
+
+.type-box-yellow {
+    background-color: var(--yellow);
+}
+
+.type-box-purple {
+    background-color: var(--purple);
+}
+
+.type-box-dark-purple {
+    background-color: var(--dark-purple);
+}
+
+.type-box-blue-grey {
+    background: linear-gradient(
+        to bottom,
+        var(--light-blue) 0%,
+        var(--light-blue) 50%,
+        var(--grey) 50%,
+        var(--grey) 100%
+    );
+}
