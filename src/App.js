@@ -1,42 +1,52 @@
 import "./App.css";
 import { toTitleCase } from "shared/helpers.js";
-import dataMock from "data/data.js";
+import { mockData } from "data/data.js";
 import Card from "components/Card";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function App() {
     const [search, setSearch] = useState("");
-    const [pokemonsData, setPokemonsData] = useState(dataMock);
 
     function modifySearch(event) {
         setSearch(event.target.value);
     }
 
-    useEffect(() => {
-        if (search === "") {
-            setPokemonsData(dataMock);
-        } else {
-            setPokemonsData(
-                dataMock.filter(({ id, name, type }) => {
-                    return (
-                        id === parseInt(search) ||
-                        name.startsWith(toTitleCase(search)) ||
-                        type.includes(toTitleCase(search))
-                    );
-                })
-            );
-        }
-    }, [search]);
-
     function renderPokemons() {
-        if (pokemonsData.length !== 0) {
-            return pokemonsData.map(({ id, name, type, img }) => {
-                return (
-                    <Card key={id} name={name} id={id} type={type} img={img} />
+        const pokemonsData = mockData.reduce((previousValue, currentValue) => {
+            const {
+                id,
+                name,
+                types,
+                sprites: {
+                    other: {
+                        official_artwork: { front_default: img },
+                    },
+                },
+            } = currentValue;
+            if (
+                id === parseInt(search, 10) ||
+                name.startsWith(search.toLowerCase()) ||
+                types.some((entry) =>
+                    entry.type.name.startsWith(search.toLowerCase())
+                )
+            )
+                return previousValue.concat(
+                    <Card
+                        key={id}
+                        name={name}
+                        id={id}
+                        types={types}
+                        img={img}
+                    />
                 );
-            });
-        }
-        return <h3 className="warning"> No pokemon data! </h3>;
+            return previousValue;
+        }, []);
+
+        return pokemonsData ? (
+            pokemonsData
+        ) : (
+            <h3 className="warning"> No pokemon data! </h3>
+        );
     }
 
     return (
@@ -45,7 +55,7 @@ function App() {
                 <h1> Pokédex </h1>
                 <input
                     className="search-bar"
-                    placeHolder="Search pokemon name, number or type..."
+                    placeholder="Search pokemon name, number or type..."
                     onChange={modifySearch}
                 />
             </header>

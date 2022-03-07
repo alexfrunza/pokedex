@@ -1,7 +1,7 @@
 import "components/Card.css";
-import { typeClass } from "shared/helpers.js";
+import { toTitleCase, typeClass } from "shared/helpers.js";
 
-function Card({ name, type, id, img }) {
+function Card({ name, types, id, img }) {
     const alt = `An image with ${name}`;
 
     return (
@@ -10,12 +10,15 @@ function Card({ name, type, id, img }) {
             <div className="details">
                 <p className="id"> #{id.toString().padStart(3, "0")} </p>
                 <br />
-                <h3 className="name"> {name} </h3>
+                <h3 className="name"> {toTitleCase(name)} </h3>
                 <div className="types">
-                    {type.map((type, index) => {
+                    {types.map(({ type: { name } }, index) => {
                         return (
-                            <span key={index} className={typeClass(type)}>
-                                {type}
+                            <span
+                                key={index}
+                                className={typeClass(toTitleCase(name))}
+                            >
+                                {toTitleCase(name)}
                             </span>
                         );
                     })}
