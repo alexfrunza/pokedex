@@ -1,4 +1,5 @@
 import "./App.css";
+import { toTitleCase } from "shared/helpers.js";
 import dataMock from "data/data.js";
 import Card from "components/Card";
 import { useState, useEffect } from "react";
@@ -9,15 +10,6 @@ function App() {
 
     function modifySearch(event) {
         setSearch(event.target.value);
-    }
-
-    function toTitleCase(string) {
-        return string
-            .split(" ")
-            .map((word) => {
-                return word[0].toUpperCase() + word.slice(1).toLowerCase();
-            })
-            .join(" ");
     }
 
     useEffect(() => {

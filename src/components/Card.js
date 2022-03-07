@@ -1,5 +1,5 @@
 import "components/Card.css";
-import { typeClass } from "helpers/pokemon.js";
+import { typeClass } from "shared/helpers.js";
 
 function Card({ name, type, id, img }) {
     const alt = `An image with ${name}`;
