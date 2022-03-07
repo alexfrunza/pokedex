@@ -1,5 +1,4 @@
 import "./App.css";
-import { toTitleCase } from "shared/helpers.js";
 import { mockData } from "data/data.js";
 import Card from "components/Card";
 import { useState } from "react";
@@ -42,7 +41,7 @@ function App() {
             return previousValue;
         }, []);
 
-        return pokemonsData ? (
+        return pokemonsData.length > 0 ? (
             pokemonsData
         ) : (
             <h3 className="warning"> No pokemon data! </h3>
@@ -56,6 +55,7 @@ function App() {
                 <input
                     className="search-bar"
                     placeholder="Search pokemon name, number or type..."
+                    value={search}
                     onChange={modifySearch}
                 />
             </header>
