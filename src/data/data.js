@@ -119,7 +119,7 @@ export const mockData = [
     },
     {
         id: 6,
-        name: "Charizard",
+        name: "charizard",
         types: [
             {
                 slot: 1,
@@ -165,7 +165,7 @@ export const mockData = [
     },
     {
         id: 8,
-        name: "Wartortle",
+        name: "wartortle",
         types: [
             {
                 slot: 1,
@@ -185,7 +185,7 @@ export const mockData = [
     },
     {
         id: 9,
-        name: "Blastoise",
+        name: "blastoise",
         types: [
             {
                 slot: 1,
@@ -205,7 +205,7 @@ export const mockData = [
     },
     {
         id: 25,
-        name: "Pikachu",
+        name: "pikachu",
         types: [
             {
                 slot: 1,
@@ -225,7 +225,7 @@ export const mockData = [
     },
     {
         id: 133,
-        name: "Eevee",
+        name: "eevee",
         types: [
             {
                 slot: 1,
@@ -245,7 +245,7 @@ export const mockData = [
     },
     {
         id: 94,
-        name: "Gengar",
+        name: "gengar",
         types: [
             {
                 slot: 1,
