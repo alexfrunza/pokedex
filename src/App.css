@@ -1,33 +1,33 @@
 header {
-    padding: 100px 0 100px 20px;
-    max-width: 900px;
     margin: 0 auto 0 auto;
+    max-width: 900px;
+    padding: 100px 0 100px 20px;
 }
 
 .search-bar {
+    margin-top: 25px;
+    border: 1px solid grey;
+    width: 325px;
+    padding: 10px 10px 10px 50px;
     background-image: url("search.png");
     background-repeat: no-repeat;
     background-position: 5px;
-    margin-top: 25px;
-    border: 1px solid grey;
-    padding: 10px 10px 10px 50px;
-    width: 325px;
 }
 
 .container {
-    background-color: white;
-    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
+    max-width: 900px;
+    background-color: white;
 }
 
 section#gallery {
-    display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    display: flex;
+    margin-bottom: 50px;
     border-radius: 10px;
     padding: 50px 0 50px 0;
-    margin-bottom: 50px;
 }
 
 .warning {
