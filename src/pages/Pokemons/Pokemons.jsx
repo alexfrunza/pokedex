@@ -1,9 +1,9 @@
-import "./App.css";
+import "./Pokemons.css";
 import { mockData } from "data/data.js";
-import Card from "components/Card";
+import Card from "components/Card/Card";
 import { useState } from "react";
 
-function App() {
+export default function Pokemons() {
     const [search, setSearch] = useState("");
 
     function modifySearch(event) {
@@ -49,21 +49,17 @@ function App() {
     }
 
     return (
-        <div className="App">
-            <header>
-                <h1> Pokédex </h1>
+        <div className="pokemons-section">
+            <div className="container">
                 <input
                     className="search-bar"
                     placeholder="Search pokemon name, number or type..."
                     value={search}
                     onChange={modifySearch}
                 />
-            </header>
-            <div className="container">
+
                 <section id="gallery">{renderPokemons()}</section>
             </div>
         </div>
     );
 }
-
-export default App;

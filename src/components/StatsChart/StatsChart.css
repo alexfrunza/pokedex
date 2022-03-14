@@ -1,0 +1,32 @@
+.stats-chart {
+    justify-content: center;
+    display: flex;
+    border-radius: 20px;
+    max-width: 500px;
+    padding: 30px;
+    background-color: #cbcbc8;
+}
+
+.stats-chart ul {
+    flex-flow: column;
+    align-items: center;
+    display: flex;
+    margin: 0 5px 0 5px;
+    font-size: 0.5rem;
+    list-style-type: none;
+    text-align: center;
+}
+
+.stats-chart ul li {
+    margin-bottom: 5px;
+    width: 70px;
+    height: 5px;
+}
+
+.stats-chart ul li.filled-box {
+    background-color: #ff6961;
+}
+
+.stats-chart ul li.empty-box {
+    background-color: #FAF8F6;
+}
