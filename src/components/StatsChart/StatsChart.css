@@ -1,11 +1,19 @@
 .stats-chart {
+    position: relative;
     justify-content: center;
     display: flex;
     border-radius: 20px;
     max-width: 500px;
-    padding: 30px;
+    padding: 50px 30px 30px 30px;
     background-color: #cbcbc8;
 }
+
+.stats-chart .title {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
 
 .stats-chart ul {
     flex-flow: column;

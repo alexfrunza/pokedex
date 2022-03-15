@@ -3,12 +3,10 @@ import { toTitleCase, typeClass } from "shared/helpers.js";
 import { Link } from "react-router-dom";
 
 function Card({ name, types, id, img }) {
-    const alt = `An image with ${name}`;
-
     return (
         <div className="card">
             <Link to={`/pokemons/${id}`}>
-                <img src={img} alt={alt} />
+                <img src={img} alt={toTitleCase(name)} />
             </Link>
             <div className="details">
                 <p className="id"> #{id.toString().padStart(3, "0")} </p>

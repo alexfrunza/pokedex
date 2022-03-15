@@ -22,6 +22,7 @@ export default function StatsChart({ stats }) {
 
     return (
         <div className="stats-chart">
+            <p className='title'> Stats </p>
             {stats.map(({ base_stat, stat: { name } }) => {
                 return (
                     <ul key={nanoid()}>

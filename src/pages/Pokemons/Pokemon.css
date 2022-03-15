@@ -1,0 +1,42 @@
+.container > header {
+    padding: 5vh 0;
+}
+ 
+.container > header h2 {
+    text-align: center;
+}
+
+.container > header h2 span {
+    color: #cbcbc8;
+}
+
+.container .pokemon {
+    display: flex;
+    padding: 10px;
+}
+
+.version {
+    align-items: center;
+    display: flex;
+    margin-top: 20px;
+}
+
+
+.version button {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+}
+
+.active-x {
+    border: 3px solid blue;
+}
+
+.active-y {
+    border: 3px solid red;
+}
+
+.not-active {
+    border: 3px solid rgba(0, 0, 0, 0);
+}
