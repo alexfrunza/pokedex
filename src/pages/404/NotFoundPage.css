@@ -1,0 +1,19 @@
+.not-found {
+    margin: 10vh auto 0 auto;
+    width: 768px;
+    text-align: center;
+}
+
+.not-found .message {
+    margin-top: 5vh;
+}
+
+.not-found .message p {
+    margin-bottom: 5vh;
+}
+
+.not-found a {
+    border-radius: 40px;
+    padding: 20px;
+    background-color: #e74946;
+}
