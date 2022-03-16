@@ -1,0 +1,46 @@
+.type-box {
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.type-box:not(:first-child) {
+    margin-left: 10px;
+}
+
+.type-box-green {
+    background-color: var(--green);
+}
+
+.type-box-orange {
+    background-color: var(--orange);
+}
+
+.type-box-blue {
+    background-color: var(--blue);
+}
+
+.type-box-grey {
+    background-color: var(--grey);
+}
+
+.type-box-yellow {
+    background-color: var(--yellow);
+}
+
+.type-box-purple {
+    background-color: var(--purple);
+}
+
+.type-box-dark-purple {
+    background-color: var(--dark-purple);
+}
+
+.type-box-blue-grey {
+    background: linear-gradient(
+        to bottom,
+        var(--light-blue) 0%,
+        var(--light-blue) 50%,
+        var(--grey) 50%,
+        var(--grey) 100%
+    );
+}

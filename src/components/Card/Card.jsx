@@ -1,5 +1,6 @@
 import "./Card.css";
-import { toTitleCase, typeClass } from "shared/helpers.js";
+import "shared/pokemonTypes.css";
+import { toTitleCase, typeClass, formatId } from "shared/helpers.js";
 import { Link } from "react-router-dom";
 
 function Card({ name, types, id, img }) {
@@ -9,7 +10,7 @@ function Card({ name, types, id, img }) {
                 <img src={img} alt={toTitleCase(name)} />
             </Link>
             <div className="details">
-                <p className="id"> #{id.toString().padStart(3, "0")} </p>
+                <p className="id"> #{formatId(id)} </p>
                 <br />
                 <h3 className="name"> {toTitleCase(name)} </h3>
                 <div className="types">

@@ -22,3 +22,7 @@ export function typeClass(type) {
 
     return `type-box type-box-${colors[type]}`;
 }
+
+export function formatId(id) {
+    return id.toString().padStart(3, "0");
+}
