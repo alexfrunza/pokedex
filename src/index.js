@@ -12,8 +12,9 @@ ReactDOM.render(
         <BrowserRouter>
             <Header />
             <Routes>
-                <Route path="/" element={<Pokemons />} />
-                <Route path="/pokemons" element={<Pokemons />} />
+                {["/", "/pokemons"].map((path) => (
+                    <Route path={path} element={<Pokemons />} />
+                ))}
                 <Route path="/pokemons/:id" element={<Pokemon />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
