@@ -17,35 +17,39 @@ export default function Pokemons() {
     }
 
     function renderPokemons() {
-        const pokemonsData = mockData.reduce((previousValue, currentValue) => {
-            const {
-                id,
-                name,
-                types,
-                sprites: {
-                    other: {
-                        official_artwork: { front_default: img },
+        const offset = 12;
+
+        const pokemonsData = pokemons
+            .slice(1, offset * page + 1)
+            .reduce((previousValue, currentValue) => {
+                const {
+                    id,
+                    name,
+                    types,
+                    sprites: {
+                        other: {
+                            "official-artwork": { front_default: img },
+                        },
                     },
-                },
-            } = currentValue;
-            if (
-                id === parseInt(search, 10) ||
-                name.startsWith(search.toLowerCase()) ||
-                types.some((entry) =>
-                    entry.type.name.startsWith(search.toLowerCase())
+                } = currentValue;
+                if (
+                    id === parseInt(search, 10) ||
+                    name.startsWith(search.toLowerCase()) ||
+                    types.some((entry) =>
+                        entry.type.name.startsWith(search.toLowerCase())
+                    )
                 )
-            )
-                return previousValue.concat(
-                    <Card
-                        key={id}
-                        name={name}
-                        id={id}
-                        types={types}
-                        img={img}
-                    />
-                );
-            return previousValue;
-        }, []);
+                    return previousValue.concat(
+                        <Card
+                            key={id}
+                            name={name}
+                            id={id}
+                            types={types}
+                            img={img}
+                        />
+                    );
+                return previousValue;
+            }, []);
 
         return pokemonsData.length > 0 ? (
             pokemonsData

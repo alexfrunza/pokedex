@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import StatusChart from "components/StatsChart/StatsChart";
-import { stats } from "data/data.js";
+import PokemonsStore from "store/PokemonsStore";
 import "./Pokemon.css";
 import "shared/pokemonTypes.css";
 import { useParams } from "react-router-dom";
-import { mockData, description } from "data/data.js";
+import { description, stats } from "data/data.js";
 import NotFoundPage from "pages/404/NotFoundPage";
 import { toTitleCase, typeClass, formatId } from "shared/helpers.js";
-import { useState } from "react";
 import pokeballBlue from "images/pokeball-blue.png";
 import pokeballRed from "images/pokeball-red.png";
 import female from "images/femenine.png";
@@ -18,7 +17,9 @@ import EvolutionCard from "components/Card/EvolutionCard";
 function Pokemon() {
     const params = useParams();
     const [descriptionVersionX, setDescriptionVersionX] = useState(true);
-    const pokemon = mockData.filter(({ id, name }) => {
+    const { pokemons } = useContext(PokemonsStore);
+
+    const pokemon = pokemons.filter(({ id, name }) => {
         return id === +params.id || name === params.id;
     })[0];
 
@@ -34,7 +35,8 @@ function Pokemon() {
                 <section>
                     <img
                         src={
-                            pokemon.sprites.other.official_artwork.front_default
+                            pokemon.sprites.other["official-artwork"]
+                                .front_default
                         }
                         alt={toTitleCase(pokemon.name)}
                     />
@@ -112,9 +114,17 @@ function Pokemon() {
             <section className="evolution">
                 <p className="evolution-header">Evolutions</p>
                 <EvolutionCard pokemon={pokemon} />
-                <img style={{alignSelf: "center"}} src={rightArrow} alt="arrow" />
+                <img
+                    style={{ alignSelf: "center" }}
+                    src={rightArrow}
+                    alt="arrow"
+                />
                 <EvolutionCard pokemon={pokemon} />
-                <img style={{alignSelf: "center"}} src={rightArrow} alt="arrow" />
+                <img
+                    style={{ alignSelf: "center" }}
+                    src={rightArrow}
+                    alt="arrow"
+                />
                 <EvolutionCard pokemon={pokemon} />
             </section>
         </div>
