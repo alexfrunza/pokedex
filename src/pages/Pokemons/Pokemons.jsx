@@ -1,10 +1,16 @@
 import "./Pokemons.css";
 import { mockData } from "data/data.js";
 import Card from "components/Card/Card";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import usePokemonsFetch from "hooks/usePokemonsFetch.js";
+import PokemonsStore from "store/PokemonsStore";
 
 export default function Pokemons() {
     const [search, setSearch] = useState("");
+    const [page, setPage] = useState(1);
+    const { data, loading, error } = usePokemonsFetch(1);
+    const { pokemons } = useContext(PokemonsStore);
+    console.log(pokemons);
 
     function modifySearch(event) {
         setSearch(event.target.value);
