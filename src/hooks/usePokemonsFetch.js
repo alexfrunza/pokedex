@@ -8,7 +8,7 @@ export default function usePokemonsFetch(page) {
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState({});
-    const { pokemons, setPokemons } = useContext(PokemonsStore);
+    const { pokemons } = useContext(PokemonsStore);
 
     useEffect(() => {
         let cancelRequest = false;
@@ -37,10 +37,7 @@ export default function usePokemonsFetch(page) {
                     resultsPokemons.forEach((pokemon) => {
                         const id = pokemon.id;
                         if (!pokemons[id]) {
-                            setPokemons((prev) => {
-                                prev[id] = pokemon;
-                                return prev;
-                            });
+                            pokemons.current[id] = pokemon;
                         }
                     });
 

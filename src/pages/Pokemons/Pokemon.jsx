@@ -4,7 +4,7 @@ import PokemonsStore from "store/PokemonsStore";
 import "./Pokemon.css";
 import "shared/pokemonTypes.css";
 import { useParams } from "react-router-dom";
-import { description, stats } from "data/data.js";
+import { description } from "data/data.js";
 import NotFoundPage from "pages/404/NotFoundPage";
 import { toTitleCase, typeClass, formatId } from "shared/helpers.js";
 import pokeballBlue from "images/pokeball-blue.png";
@@ -19,7 +19,7 @@ function Pokemon() {
     const [descriptionVersionX, setDescriptionVersionX] = useState(true);
     const { pokemons } = useContext(PokemonsStore);
 
-    const pokemon = pokemons.filter(({ id, name }) => {
+    const pokemon = pokemons.current.filter(({ id, name }) => {
         return id === +params.id || name === params.id;
     })[0];
 
@@ -101,7 +101,7 @@ function Pokemon() {
                             return (
                                 <span
                                     key={index}
-                                    className={typeClass(toTitleCase(name))}
+                                    className={typeClass(name)}
                                 >
                                     {toTitleCase(name)}
                                 </span>
@@ -110,7 +110,7 @@ function Pokemon() {
                     </article>
                 </section>
             </main>
-            <StatusChart stats={stats} />
+            <StatusChart stats={pokemon.stats} />
             <section className="evolution">
                 <p className="evolution-header">Evolutions</p>
                 <EvolutionCard pokemon={pokemon} />

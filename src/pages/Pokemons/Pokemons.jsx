@@ -10,7 +10,6 @@ export default function Pokemons() {
     const [page, setPage] = useState(1);
     const { data, loading, error } = usePokemonsFetch(1);
     const { pokemons } = useContext(PokemonsStore);
-    console.log(pokemons);
 
     function modifySearch(event) {
         setSearch(event.target.value);
@@ -19,7 +18,7 @@ export default function Pokemons() {
     function renderPokemons() {
         const offset = 12;
 
-        const pokemonsData = pokemons
+        const pokemonsData = pokemons.current
             .slice(1, offset * page + 1)
             .reduce((previousValue, currentValue) => {
                 const {

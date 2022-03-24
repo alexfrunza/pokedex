@@ -1,12 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useRef } from "react";
 
 export const PokemonsStore = createContext({});
 
 export function PokemonsStoreProvider({ children }) {
-    const [pokemons, setPokemons] = useState([]);
+    const pokemons = useRef([]);
+    // const [pokemons, setPokemons] = useState([]);
 
     return (
-        <PokemonsStore.Provider value={{ setPokemons, pokemons }}>
+        <PokemonsStore.Provider value={{ pokemons }}>
             {children}
         </PokemonsStore.Provider>
     );
