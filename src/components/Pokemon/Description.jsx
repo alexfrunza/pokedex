@@ -4,7 +4,7 @@ import pokeballBlue from "images/pokeball-blue.png";
 import "./Description.css";
 
 export default function Description({ flavorTextEntries }) {
-    const [descriptionVersion, setDescriptionVersion] = useState("shield");
+    const [descriptionVersion, setDescriptionVersion] = useState("sword");
 
     function pokemonDescription() {
         const swordShieldDesc = flavorTextEntries.filter(

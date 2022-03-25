@@ -1,31 +1,41 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import PokemonsStore from "store/PokemonsStore";
 
-export default function usePokemonsFetch(page) {
-    const cache = useRef({
-        0: { next: "https://pokeapi.co/api/v2/pokemon?limit=12" },
-    });
-    const [data, setData] = useState({});
+export default function usePokemonsFetch(page, offset) {
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState({});
     const { pokemons } = useContext(PokemonsStore);
 
+    function verifyCache() {
+        for (let i = offset * (page - 1) + 1; i <= page * offset; i++) {
+            if (!pokemons[i]) return false;
+        }
+        return true;
+    }
+
     useEffect(() => {
         let cancelRequest = false;
+        if (!page) return;
+        setLoading(true);
 
         const fetchData = async () => {
-            if (cache.current[page]) {
-                const data = cache.current[page];
+            if (verifyCache()) {
+                const data = pokemons.current.slice(1, page * offset);
                 setData(data);
                 setLoading(false);
             } else {
                 try {
-                    const response = await fetch(cache.current[page - 1].next);
-                    const data = await response.json();
-                    cache.current[page] = data;
+                    const urls = [];
+                    for (
+                        let i = offset * (page - 1) + 1;
+                        i <= page * offset;
+                        i++
+                    ) {
+                        urls.push(`https://pokeapi.co/api/v2/pokemon/${i}/`);
+                    }
 
-                    const pokemonsArray = data.results;
-                    const pokemonsRequests = pokemonsArray.map(({ url }) => {
+                    const pokemonsRequests = urls.map((url) => {
                         const pokemonId = url.split("/").reverse()[2];
                         return (
                             pokemons[pokemonId] ||
@@ -41,7 +51,7 @@ export default function usePokemonsFetch(page) {
                         }
                     });
 
-                    setData(data);
+                    setData(pokemons.current.slice(1, page * offset + 1));
                     setLoading(false);
                 } catch (error) {
                     if (cancelRequest) return;

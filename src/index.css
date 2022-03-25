@@ -20,10 +20,8 @@ button {
 }
 
 body {
-    background-image: url("images/background.jpg");
+    background-image: url("images/background.png");
     background-color: #cccccc;
-    background-position: center;
-    background-repeat: no-repeat;
     font-family: "Press Start 2P", -apple-system, BlinkMacSystemFont, "Segoe UI",
         "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
         "Helvetica Neue", sans-serif;
