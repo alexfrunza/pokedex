@@ -33,11 +33,17 @@ export default function usePokemonFetch(id) {
 
                     const responses = await Promise.all(requests);
 
+                    const evolutionChain = await fetch(
+                        responses[1].evolution_chain.url
+                    ).then((res) => res.json());
+
+
                     const data = {
                         ...responses[0],
                         flavorTextEntries: responses[1].flavor_text_entries,
                         habitat: responses[1].habitat.name,
-                        shape: responses[1].shape.name
+                        shape: responses[1].shape.name,
+                        chain: [evolutionChain.chain]
                     };
 
                     pokemons.current[id] = data;
