@@ -37,14 +37,16 @@ export default function usePokemonFetch(id) {
                         ...responses[0],
                         flavorTextEntries: responses[1].flavor_text_entries,
                     };
-                    console.log(data);
 
                     pokemons.current[id] = data;
                     setData(data);
                     setLoading(false);
                 } catch (error) {
                     if (cancelRequest) return;
-                    setError({ description: "Oops, there was an error!" });
+                    setError({
+                        description: "Oops, there was an error!",
+                        ok: true,
+                    });
                     setLoading(false);
                 }
             }

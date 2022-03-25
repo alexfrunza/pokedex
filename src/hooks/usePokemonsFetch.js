@@ -45,7 +45,10 @@ export default function usePokemonsFetch(page) {
                     setLoading(false);
                 } catch (error) {
                     if (cancelRequest) return;
-                    setError({ description: "Oops, there was an error!" });
+                    setError({
+                        description: "Oops, there was an error!",
+                        ok: true,
+                    });
                     setLoading(false);
                 }
             }
