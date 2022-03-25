@@ -20,7 +20,7 @@ export default function EvolutionCard({ pokemon }) {
                     return (
                         <span
                             key={index}
-                            className={typeClass(toTitleCase(name))}
+                            className={typeClass(name)}
                         >
                             {toTitleCase(name)}
                         </span>

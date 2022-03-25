@@ -36,6 +36,8 @@ export default function usePokemonFetch(id) {
                     const data = {
                         ...responses[0],
                         flavorTextEntries: responses[1].flavor_text_entries,
+                        habitat: responses[1].habitat.name,
+                        shape: responses[1].shape.name
                     };
 
                     pokemons.current[id] = data;

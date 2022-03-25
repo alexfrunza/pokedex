@@ -44,9 +44,9 @@ function Pokemon() {
                                 title="Height"
                                 content={data.height}
                             />
-                            <PokemonInfoCard title="Category" content="" />
-                            <PokemonInfoCard title="Weight" content="" />
-                            <PokemonInfoCard title="Abilities" content="" />
+                            <PokemonInfoCard title="Habitat" content={data.habitat} />
+                            <PokemonInfoCard title="Weight" content={data.weight} />
+                            <PokemonInfoCard title="Shape" content={data.shape} />
                         </article>
                         <article className="types">
                             <p className="types-header">Type</p>
