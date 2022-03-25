@@ -6,9 +6,8 @@ import "shared/pokemonTypes.css";
 import { useParams } from "react-router-dom";
 import NotFoundPage from "pages/404/NotFoundPage";
 import { toTitleCase, typeClass, formatId } from "shared/helpers.js";
-import rightArrow from "images/right-arrow.png";
-import EvolutionCard from "components/Pokemon/EvolutionCard";
 import PokemonInfoCard from "components/Pokemon/PokemonInfoCard";
+import EvolutionChain from "components/Pokemon/EvolutionChain";
 import Description from "components/Pokemon/Description";
 import Loader from "components/Loader/Loader";
 
@@ -44,9 +43,18 @@ function Pokemon() {
                                 title="Height"
                                 content={data.height}
                             />
-                            <PokemonInfoCard title="Category" content="" />
-                            <PokemonInfoCard title="Weight" content="" />
-                            <PokemonInfoCard title="Abilities" content="" />
+                            <PokemonInfoCard
+                                title="Habitat"
+                                content={data.habitat}
+                            />
+                            <PokemonInfoCard
+                                title="Weight"
+                                content={data.weight}
+                            />
+                            <PokemonInfoCard
+                                title="Shape"
+                                content={data.shape}
+                            />
                         </article>
                         <article className="types">
                             <p className="types-header">Type</p>
@@ -64,22 +72,7 @@ function Pokemon() {
                     </section>
                 </main>
                 <StatusChart stats={data.stats} />
-                <section className="evolution">
-                    <p className="evolution-header">Evolutions</p>
-                    <EvolutionCard pokemon={data} />
-                    <img
-                        style={{ alignSelf: "center" }}
-                        src={rightArrow}
-                        alt="arrow"
-                    />
-                    <EvolutionCard pokemon={data} />
-                    <img
-                        style={{ alignSelf: "center" }}
-                        src={rightArrow}
-                        alt="arrow"
-                    />
-                    <EvolutionCard pokemon={data} />
-                </section>
+                <EvolutionChain chain={data.chain} />
             </div>
         );
     }

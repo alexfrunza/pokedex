@@ -33,18 +33,28 @@ export default function usePokemonFetch(id) {
 
                     const responses = await Promise.all(requests);
 
+                    const evolutionChain = await fetch(
+                        responses[1].evolution_chain.url
+                    ).then((res) => res.json());
+
+
                     const data = {
                         ...responses[0],
                         flavorTextEntries: responses[1].flavor_text_entries,
+                        habitat: responses[1].habitat.name,
+                        shape: responses[1].shape.name,
+                        chain: [evolutionChain.chain]
                     };
-                    console.log(data);
 
                     pokemons.current[id] = data;
                     setData(data);
                     setLoading(false);
                 } catch (error) {
                     if (cancelRequest) return;
-                    setError({ description: "Oops, there was an error!" });
+                    setError({
+                        description: "Oops, there was an error!",
+                        ok: true,
+                    });
                     setLoading(false);
                 }
             }

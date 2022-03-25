@@ -1,32 +1,30 @@
 import React from "react";
 import "./EvolutionCard.css";
 import { typeClass, toTitleCase, formatId } from "shared/helpers.js";
+import usePokemonFetch from "hooks/usePokemonFetch";
 import { Link } from "react-router-dom";
 
-export default function EvolutionCard({ pokemon }) {
-    return (
-        <Link to={`/pokemons/${pokemon.id}`}>
+export default function EvolutionCard({ pokemonName }) {
+    const { data, loading } = usePokemonFetch(pokemonName);
+
+    return !loading ? (
+        <Link to={`/pokemons/${data.id}`}>
             <article className="stage">
                 <img
-                    src={
-                        pokemon.sprites.other["official-artwork"].front_default
-                    }
+                    src={data.sprites.other["official-artwork"].front_default}
                     alt="stage-1"
                 />
                 <h3>
-                    {toTitleCase(pokemon.name)} #{formatId(pokemon.id)}
+                    {toTitleCase(data.name)} #{formatId(data.id)}
                 </h3>
-                {pokemon.types.map(({ type: { name } }, index) => {
+                {data.types.map(({ type: { name } }, index) => {
                     return (
-                        <span
-                            key={index}
-                            className={typeClass(toTitleCase(name))}
-                        >
+                        <span key={index} className={typeClass(name)}>
                             {toTitleCase(name)}
                         </span>
                     );
                 })}
             </article>
         </Link>
-    );
+    ) : "";
 }
