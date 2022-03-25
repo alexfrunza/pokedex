@@ -1,7 +1,7 @@
 import React from "react";
 import "./StatsChart.css";
-import { toTitleCase } from "shared/helpers.js";
 import { nanoid } from "nanoid";
+import { toTitleCase } from "shared/helpers.js";
 
 export default function StatsChart({ stats }) {
     function renderColumn(points) {
@@ -14,7 +14,7 @@ export default function StatsChart({ stats }) {
         }
 
         // Add filled boxes to array
-        for (let i = 1; i <= filledBoxes; i++) {
+        for (let i = 15 - filledBoxes + 1; i <= 15; i++) {
             boxes.push(<li key={nanoid()} className="filled-box"></li>);
         }
         return boxes;
@@ -22,10 +22,10 @@ export default function StatsChart({ stats }) {
 
     return (
         <div className="stats-chart">
-            <p className='title'> Stats </p>
+            <p className="title"> Stats </p>
             {stats.map(({ base_stat, stat: { name } }) => {
                 return (
-                    <ul key={nanoid()}>
+                    <ul key={name}>
                         {renderColumn(base_stat)}
                         {toTitleCase(name.replaceAll("-", " "))}
                     </ul>

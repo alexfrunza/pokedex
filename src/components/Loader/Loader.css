@@ -1,0 +1,4 @@
+.u-pulse {
+  -webkit-animation: tada 1000ms infinite;
+          animation: tada 1000ms infinite;
+}

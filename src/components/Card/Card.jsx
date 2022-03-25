@@ -18,7 +18,7 @@ function Card({ name, types, id, img }) {
                         return (
                             <span
                                 key={index}
-                                className={typeClass(toTitleCase(name))}
+                                className={typeClass(name)}
                             >
                                 {toTitleCase(name)}
                             </span>

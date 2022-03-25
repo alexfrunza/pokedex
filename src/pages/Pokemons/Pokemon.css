@@ -3,15 +3,22 @@
     padding: 10px;
 }
 
-.container > header {
+.container-loader {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    min-height: 50vh;
+}
+
+.container > div > header {
     padding: 5vh 0;
 }
  
-.container > header h2 {
+.container > div > header h2 {
     text-align: center;
 }
 
-.container > header h2 span {
+.container > div > header h2 span {
     color: #cbcbc8;
 }
 
@@ -20,33 +27,6 @@
     padding: 10px;
     gap: 10px;
 }
-
-.version {
-    align-items: center;
-    display: flex;
-    margin-top: 20px;
-}
-
-
-.version button {
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    padding: 2px;
-}
-
-.active-x {
-    border: 3px solid #55a2fd;
-}
-
-.active-y {
-    border: 3px solid #d50027;
-}
-
-.not-active {
-    border: 3px solid rgba(0, 0, 0, 0);
-}
-
 .pokemon .general-information {
     flex-wrap: wrap;
     display: flex;

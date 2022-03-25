@@ -8,12 +8,13 @@ export default function EvolutionCard({ pokemon }) {
         <Link to={`/pokemons/${pokemon.id}`}>
             <article className="stage">
                 <img
-                    src={pokemon.sprites.other.official_artwork.front_default}
+                    src={
+                        pokemon.sprites.other["official-artwork"].front_default
+                    }
                     alt="stage-1"
                 />
                 <h3>
-                    {toTitleCase(pokemon.name)} #
-                    {formatId(pokemon.id)}
+                    {toTitleCase(pokemon.name)} #{formatId(pokemon.id)}
                 </h3>
                 {pokemon.types.map(({ type: { name } }, index) => {
                     return (

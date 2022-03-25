@@ -24,22 +24,8 @@
 }
 
 .card:hover {
-    animation-name: bounce;
-    -moz-animation-name: bounce;
-}
-
-@keyframes bounce {
-    0%,
-    100% {
-        -webkit-transform: translateY(0);
-        -ms-transform: translateY(0);
-        transform: translateY(0);
-    }
-    50% {
-        -webkit-transform: translateY(-10px);
-        -ms-transform: translateY(-10px);
-        transform: translateY(-10px);
-    }
+    animation-name: pulse;
+    -moz-animation-name: pulse;
 }
 
 .card a {
