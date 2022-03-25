@@ -1,0 +1,28 @@
+.pokemon .description > p {
+    min-height: 150px;
+}
+
+.version {
+    align-items: center;
+    display: flex;
+    margin-top: 20px;
+}
+
+.version button {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+}
+
+.sword-active {
+    border: 3px solid #55a2fd;
+}
+
+.shield-active {
+    border: 3px solid #d50027;
+}
+
+.not-active {
+    border: 3px solid rgba(0, 0, 0, 0);
+}

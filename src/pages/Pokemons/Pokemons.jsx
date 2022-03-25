@@ -1,6 +1,8 @@
 import "./Pokemons.css";
 import { mockData } from "data/data.js";
 import Card from "components/Card/Card";
+import Loader from "components/Loader/Loader";
+import NotFoundPage from "pages/404/NotFoundPage";
 import { useState, useContext } from "react";
 import usePokemonsFetch from "hooks/usePokemonsFetch.js";
 import PokemonsStore from "store/PokemonsStore";
@@ -57,7 +59,13 @@ export default function Pokemons() {
         );
     }
 
-    return (
+    return loading ? (
+        <div className="container container-loader">
+            <Loader />
+        </div>
+    ) : error.ok ? (
+        <NotFoundPage />
+    ) : (
         <div className="pokemons-section">
             <div className="container">
                 <input
