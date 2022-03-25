@@ -1,5 +1,4 @@
 import "./Pokemons.css";
-import { mockData } from "data/data.js";
 import Card from "components/Card/Card";
 import Loader from "components/Loader/Loader";
 import NotFoundPage from "pages/404/NotFoundPage";
@@ -9,8 +8,8 @@ import PokemonsStore from "store/PokemonsStore";
 
 export default function Pokemons() {
     const [search, setSearch] = useState("");
-    const [page, setPage] = useState(1);
-    const { data, loading, error } = usePokemonsFetch(1);
+    const [page] = useState(1);
+    const { loading, error } = usePokemonsFetch(1);
     const { pokemons } = useContext(PokemonsStore);
 
     function modifySearch(event) {

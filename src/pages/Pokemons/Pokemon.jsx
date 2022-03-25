@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import usePokemonFetch from "hooks/usePokemonFetch";
 import StatusChart from "components/StatsChart/StatsChart";
 import "./Pokemon.css";
