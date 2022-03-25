@@ -35,8 +35,8 @@ export default function usePokemonFetch(id) {
 
                     const data = {
                         ...responses[0],
-                        flavorTextEntries: responses[1].flavor_text_entries
-                    }
+                        flavorTextEntries: responses[1].flavor_text_entries,
+                    };
                     console.log(data);
 
                     pokemons.current[id] = data;
@@ -55,6 +55,7 @@ export default function usePokemonFetch(id) {
         return function cleanup() {
             cancelRequest = true;
         };
+        // eslint-disable-next-line
     }, [id]);
 
     return { data, loading, error };

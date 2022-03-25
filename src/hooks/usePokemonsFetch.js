@@ -56,6 +56,7 @@ export default function usePokemonsFetch(page) {
         return function cleanup() {
             cancelRequest = true;
         };
+        // eslint-disable-next-line
     }, [page]);
 
     return { data, loading, error };
