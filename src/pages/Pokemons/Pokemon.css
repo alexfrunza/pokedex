@@ -10,15 +10,15 @@
     min-height: 50vh;
 }
 
-.container > div > header {
+.container > header {
     padding: 5vh 0;
 }
  
-.container > div > header h2 {
+.container > header h2 {
     text-align: center;
 }
 
-.container > div > header h2 span {
+.container > header h2 span {
     color: #cbcbc8;
 }
 
