@@ -1,8 +1,10 @@
 import "./Card.css";
+import React from "react";
 import "shared/pokemonTypes.css";
-import { toTitleCase, typeClass, formatId } from "shared/helpers.js";
+import { toTitleCase, typeClass, formatId } from "shared/helpers";
 import { Link } from "react-router-dom";
 
+// eslint-disable-next-line
 function Card({ name, types, id, img }) {
     return (
         <div className="card">
@@ -14,16 +16,11 @@ function Card({ name, types, id, img }) {
                 <br />
                 <h3 className="name"> {toTitleCase(name)} </h3>
                 <div className="types">
-                    {types.map(({ type: { name } }, index) => {
-                        return (
-                            <span
-                                key={index}
-                                className={typeClass(name)}
-                            >
-                                {toTitleCase(name)}
-                            </span>
-                        );
-                    })}
+                    {types.map(({ type: { name: typeName } }) => (
+                        <span key={typeName} className={typeClass(typeName)}>
+                            {toTitleCase(typeName)}
+                        </span>
+                    ))}
                 </div>
             </div>
         </div>

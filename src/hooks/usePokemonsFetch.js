@@ -8,7 +8,7 @@ export default function usePokemonsFetch(page, offset) {
     const { pokemons } = useContext(PokemonsStore);
 
     function verifyCache() {
-        for (let i = offset * (page - 1) + 1; i <= page * offset; i++) {
+        for (let i = offset * (page - 1) + 1; i <= page * offset; i += 1) {
             if (!pokemons[i]) return false;
         }
         return true;
@@ -16,13 +16,13 @@ export default function usePokemonsFetch(page, offset) {
 
     useEffect(() => {
         let cancelRequest = false;
-        if (!page) return;
+        if (!page) return undefined;
         setLoading(true);
 
         const fetchData = async () => {
             if (verifyCache()) {
-                const data = pokemons.current.slice(1, page * offset);
-                setData(data);
+                const newData = pokemons.current.slice(1, page * offset);
+                setData(newData);
                 setLoading(false);
             } else {
                 try {
@@ -30,7 +30,7 @@ export default function usePokemonsFetch(page, offset) {
                     for (
                         let i = offset * (page - 1) + 1;
                         i <= page * offset;
-                        i++
+                        i += 1
                     ) {
                         urls.push(`https://pokeapi.co/api/v2/pokemon/${i}/`);
                     }
@@ -45,7 +45,7 @@ export default function usePokemonsFetch(page, offset) {
 
                     const resultsPokemons = await Promise.all(pokemonsRequests);
                     resultsPokemons.forEach((pokemon) => {
-                        const id = pokemon.id;
+                        const { id } = pokemon;
                         if (!pokemons[id]) {
                             pokemons.current[id] = pokemon;
                         }
@@ -53,7 +53,7 @@ export default function usePokemonsFetch(page, offset) {
 
                     setData(pokemons.current.slice(1, page * offset + 1));
                     setLoading(false);
-                } catch (error) {
+                } catch (fetchError) {
                     if (cancelRequest) return;
                     setError({
                         description: "Oops, there was an error!",

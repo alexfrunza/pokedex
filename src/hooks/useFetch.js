@@ -8,21 +8,21 @@ export default function useFetch(url) {
 
     useEffect(() => {
         let cancelRequest = false;
-        if (!url) return;
+        if (!url) return undefined;
 
         const fetchData = async () => {
             if (cache.current[url]) {
-                const data = cache.current[url];
-                setData(data);
+                const newData = cache.current[url];
+                setData(newData);
                 setLoading(false);
             } else {
                 try {
                     const response = await fetch(url);
-                    const data = await response.json();
+                    const newData = await response.json();
                     cache.current[url] = data;
-                    setData(data);
+                    setData(newData);
                     setLoading(false);
-                } catch (error) {
+                } catch (fetchError) {
                     if (cancelRequest) return;
                     setError({ description: "Oops, there was an error!" });
                     setLoading(false);

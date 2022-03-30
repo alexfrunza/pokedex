@@ -1,6 +1,6 @@
 import React from "react";
 import "./EvolutionCard.css";
-import { typeClass, toTitleCase, formatId } from "shared/helpers.js";
+import { typeClass, toTitleCase, formatId } from "shared/helpers";
 import usePokemonFetch from "hooks/usePokemonFetch";
 import { Link } from "react-router-dom";
 
@@ -15,16 +15,17 @@ export default function EvolutionCard({ pokemonName }) {
                     alt="stage-1"
                 />
                 <h3>
-                    {toTitleCase(data.name)} #{formatId(data.id)}
+                    {toTitleCase(data.name)}#{formatId(data.id)}
                 </h3>
-                {data.types.map(({ type: { name } }, index) => {
-                    return (
-                        <span key={index} className={typeClass(name)}>
-                            {toTitleCase(name)}
-                        </span>
-                    );
-                })}
+                {data.types.map(({ type: { name } }, index) => (
+                    // eslint-disable-next-line
+                    <span key={index} className={typeClass(name)}>
+                        {toTitleCase(name)}
+                    </span>
+                ))}
             </article>
         </Link>
-    ) : "";
+    ) : (
+        ""
+    );
 }
