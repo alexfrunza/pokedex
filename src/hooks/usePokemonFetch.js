@@ -10,15 +10,15 @@ export default function usePokemonFetch(id) {
 
     useEffect(() => {
         let cancelRequest = false;
-        if (!id) return;
+        if (!id) return undefined;
 
         const fetchData = async () => {
             if (
                 pokemons.current[id] &&
                 pokemons.current[id].flavorTextEntries
             ) {
-                const data = pokemons.current[id];
-                setData(data);
+                const newData = pokemons.current[id];
+                setData(newData);
                 setLoading(false);
             } else {
                 try {
@@ -27,9 +27,9 @@ export default function usePokemonFetch(id) {
                         `https://pokeapi.co/api/v2/pokemon-species/${id}`,
                     ];
 
-                    const requests = urls.map((url) => {
-                        return fetch(url).then((res) => res.json());
-                    });
+                    const requests = urls.map((url) =>
+                        fetch(url).then((res) => res.json())
+                    );
 
                     const responses = await Promise.all(requests);
 
@@ -37,19 +37,18 @@ export default function usePokemonFetch(id) {
                         responses[1].evolution_chain.url
                     ).then((res) => res.json());
 
-
-                    const data = {
+                    const newData = {
                         ...responses[0],
                         flavorTextEntries: responses[1].flavor_text_entries,
                         habitat: responses[1].habitat.name,
                         shape: responses[1].shape.name,
-                        chain: [evolutionChain.chain]
+                        chain: [evolutionChain.chain],
                     };
 
                     pokemons.current[id] = data;
-                    setData(data);
+                    setData(newData);
                     setLoading(false);
-                } catch (error) {
+                } catch (fetchError) {
                     if (cancelRequest) return;
                     setError({
                         description: "Oops, there was an error!",

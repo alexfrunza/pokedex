@@ -1,14 +1,14 @@
 import React from "react";
-import { toTitleCase } from "shared/helpers.js";
+import { toTitleCase } from "shared/helpers";
 
 export default function PokemonInfoCard({ title, content }) {
     function formatContent() {
-        console.log(content);
         if (title === "Height") return `${Number.parseFloat(content) / 10} m`;
-        else if (title === "Weight")
-            return `${Number.parseFloat(content) / 10} kg`;
-        else if (title === "Shape" || title === "Habitat")
+        if (title === "Weight") return `${Number.parseFloat(content) / 10} kg`;
+        if (title === "Shape" || title === "Habitat") {
             return toTitleCase(content);
+        }
+        return "";
     }
 
     return (

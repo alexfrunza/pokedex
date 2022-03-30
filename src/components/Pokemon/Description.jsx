@@ -29,12 +29,14 @@ export default function Description({ flavorTextEntries }) {
             <div className="version">
                 <p> Versions </p>
                 <button
+                    type="button"
                     onClick={() => setDescriptionVersion("sword")}
                     className={classButton("sword")}
                 >
                     <img src={pokeballBlue} alt="Pokeball blue" />
                 </button>
                 <button
+                    type="button"
                     onClick={() => setDescriptionVersion("shield")}
                     className={classButton("shield")}
                 >

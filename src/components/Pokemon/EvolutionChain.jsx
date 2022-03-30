@@ -7,7 +7,7 @@ export default function EvolutionChain({ chain }) {
         <img style={{ alignSelf: "center" }} src={rightArrow} alt="arrow" />
     );
 
-    function makeEvolutionChain(chainLink, index=0) {
+    function makeEvolutionChain(chainLink) {
         const arr = [];
         arr.push(<EvolutionCard pokemonName={chainLink[0].species.name} />);
         if (chainLink[0].evolves_to.length) {

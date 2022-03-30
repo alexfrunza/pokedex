@@ -9,6 +9,6 @@ export default function Loader() {
             src={loaderPng}
             alt="loader"
             className="o-pokeball c-loader u-pulse"
-        ></img>
+        />
     );
 }
