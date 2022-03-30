@@ -2,8 +2,8 @@ import "./Pokemons.css";
 import Card from "components/Card/Card";
 import Loader from "components/Loader/Loader";
 import NotFoundPage from "pages/404/NotFoundPage";
-import { useState, useCallback, useEffect, useRef } from "react";
-import usePokemonsFetch from "hooks/usePokemonsFetch.js";
+import React, { useState, useCallback, useEffect, useRef } from "react";
+import usePokemonsFetch from "hooks/usePokemonsFetch";
 
 export default function Pokemons() {
     const [search, setSearch] = useState("");
@@ -50,10 +50,11 @@ export default function Pokemons() {
             types.some((entry) =>
                 entry.type.name.startsWith(search.toLowerCase())
             )
-        )
+        ) {
             return previousValue.concat(
                 <Card key={id} name={name} id={id} types={types} img={img} />
             );
+        }
         return previousValue;
     }, []);
 
@@ -67,6 +68,7 @@ export default function Pokemons() {
 
     function loaderIfRenderMore() {
         if (loading) return <Loader />;
+        return "";
     }
 
     return (

@@ -23,6 +23,7 @@
             { "overrides": { "?": "before", ":": "before" } }
         ],
         "react/prop-types": "off",
+        "object-curly-newline": "off",
         "comma-dangle": "off",
         "react/jsx-one-expression-per-line": "off",
         "implicit-arrow-linebreak": "off",
